@@ -1,0 +1,6 @@
+usr/include/appimage/
+usr/lib/*/cmake/libappimage/
+usr/lib/*/libappimage.so
+usr/lib/*/libappimage_hashlib.a
+usr/lib/*/libappimage_shared.a
+usr/lib/*/pkgconfig/libappimage.pc

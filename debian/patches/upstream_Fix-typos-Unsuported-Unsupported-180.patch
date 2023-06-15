@@ -1,0 +1,52 @@
+From e456429dafaee3245f6e7925b64d5990ad5affe7 Mon Sep 17 00:00:00 2001
+From: Scarlett Gately Moore <sgmoore@debian.org>
+Date: Fri, 16 Dec 2022 14:12:55 -0700
+Subject: [PATCH] Fix typos Unsuported -> Unsupported (#180)
+
+* Client builds fail at linking due to missing targets when
+USE_SYSTEM_LIBRARY is true.
+
+#For targets not using pkg-config... and USE_SYSTEM_{DEPENDENCY} is true eg. xdgutils \
+#find_dependency needs to be used as when clients (aka appimagelauncher) try to use this library we get linking failure
+#because the dependencies of the dependency(libappimnage) targets are not imported. Hope this makes sence.
+#Builds fine in debian and appimagelauncher no longer has linking failures.
+
+* Fix typos Unsuported -> Unsupported.
+
+* Revert "Client builds fail at linking due to missing targets when"
+
+This reverts commit fbbabbdcf3c466a506fbd6ec95d9e9a8c9f96830.
+---
+ src/libappimage/utils/IconHandleCairoRsvg.cpp       | 2 +-
+ src/libappimage/utils/IconHandleDLOpenCairoRsvg.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/libappimage/utils/IconHandleCairoRsvg.cpp b/src/libappimage/utils/IconHandleCairoRsvg.cpp
+index 2b2a9b0..8a20ef5 100644
+--- a/src/libappimage/utils/IconHandleCairoRsvg.cpp
++++ b/src/libappimage/utils/IconHandleCairoRsvg.cpp
+@@ -230,7 +230,7 @@ namespace appimage {
+                     throw IconHandleError("png to svg conversion is not supported");
+             }
+ 
+-            throw IconHandleError("Unsuported format");
++            throw IconHandleError("Unsupported format");
+         }
+     }
+ }
+diff --git a/src/libappimage/utils/IconHandleDLOpenCairoRsvg.cpp b/src/libappimage/utils/IconHandleDLOpenCairoRsvg.cpp
+index 97cfb07..577d72f 100644
+--- a/src/libappimage/utils/IconHandleDLOpenCairoRsvg.cpp
++++ b/src/libappimage/utils/IconHandleDLOpenCairoRsvg.cpp
+@@ -158,7 +158,7 @@ namespace appimage {
+                     throw IconHandleError("png to svg conversion is not supported");
+             }
+ 
+-            throw IconHandleError("Unsuported format");
++            throw IconHandleError("Unsupported format");
+         }
+     }
+ }
+-- 
+2.35.1
+
