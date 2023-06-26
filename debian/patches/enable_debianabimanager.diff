@@ -1,0 +1,30 @@
+From: Scarlett Moore <sgmoore@debian.org>
+From: Pino Toscano <pino@debian.org>
+Date: Fri, 16 Dec 2022 10:21:09 -0700
+Subject: Use ABI Manager.
+Description: Use ABI Manager to bump SO Version due to missing symbols.
+Forwarded: not-needed
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,3 +52,20 @@ add_subdirectory(src)
+ if(BUILD_TESTING)
+     add_subdirectory(tests)
+ endif()
++
++# XXX workaround the fact that DebianABIManager only works if the build type
++# is "Debian"
++set(OLD_CMAKE_BUILD_TYPE ${CMAKE_BUILD_TYPE})
++set(CMAKE_BUILD_TYPE "Debian")
++include(/usr/share/pkg-kde-tools/cmake/DebianABIManager.cmake)
++# XXX kludge: append the "Debian" link flags created by DebianABIManager
++# to the actually used link flags
++get_target_property(debabi_link_flags libappimage LINK_FLAGS_DEBIAN)
++get_target_property(link_flags libappimage LINK_FLAGS)
++if(NOT(link_flags) OR (link_flags STREQUAL "NOTFOUND"))
++    set(link_flags "")
++endif()
++set_target_properties(libappimage PROPERTIES LINK_FLAGS ${link_flags} ${debabi_link_flags})
++# XXX reset the build type to what was originally set, as it apparently
++# does make a difference to cmake
++set(CMAKE_BUILD_TYPE ${OLD_CMAKE_BUILD_TYPE})

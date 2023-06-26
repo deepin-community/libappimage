@@ -1,15 +1,78 @@
-Source: template-repository
-Section: unknown
+Source: libappimage
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
+Uploaders: Scarlett Moore <sgmoore@debian.org>
+Build-Depends: cmake,
+               debhelper-compat (= 13),
+               libarchive-dev,
+               libcairo2-dev,
+               libglib2.0-dev,
+               liblzma-dev,
+               libboost-filesystem-dev,
+               librsvg2-dev,
+               libsquashfuse-dev,
+               pkg-config,
+               pkg-kde-tools,
+               xdg-utils-cxx,
+               zlib1g-dev,
+Standards-Version: 4.6.2
+Section: libs
+Homepage: https://github.com/AppImageCommunity/libappimage
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/3rdparty/libappimage
+Vcs-Git: https://salsa.debian.org/qt-kde-team/3rdparty/libappimage.git
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: libappimage-dev
+Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends: libappimage1.0abi1 (= ${binary:Version}),
+         libcairo2-dev,
+         libglib2.0-dev,
+         librsvg2-dev,
+         zlib1g-dev,
+         ${misc:Depends}
+Description: Development files for libappimage
+ Core library of the AppImage project. Reference implementation
+ of the AppImage specification. https://appimage.org
+ .
+ AppImage provides a way for upstream developers to provide
+ “native” binaries for Linux users just the same way they could
+ do for other operating systems. It allow packaging applications
+ for any common Linux based operating system, e.g., Ubuntu,
+ Debian, openSUSE, RHEL, CentOS, Fedora etc. AppImages
+ come with all dependencies that cannot be assumed to be part
+ of each target system in a recent enough version and will run
+ on most Linux distributions without further modifications.
+ .
+ AppImage is the format, and AppImageKit provides a
+ reference implementation.
+ .
+ This package contains the development files for libappimage.
+
+Package: libappimage1.0abi1
+X-Debian-ABI: 1
+X-CMake-Target: libappimage
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Core library for appimage
+ Core library of the AppImage project. Reference implementation
+ of the AppImage specification. https://appimage.org
+ .
+ AppImage provides a way for upstream developers to provide
+ “native” binaries for Linux users just the same way they could
+ do for other operating systems. It allow packaging applications
+ for any common Linux based operating system, e.g., Ubuntu,
+ Debian, openSUSE, RHEL, CentOS, Fedora etc. AppImages
+ come with all dependencies that cannot be assumed to be part
+ of each target system in a recent enough version and will run
+ on most Linux distributions without further modifications.
+ .
+ AppImage is the format, and AppImageKit provides a
+ reference implementation.
+ .
+ This library is used by some tools used to ease the installation
+ and usage of appimages.
+ .
+ This package contains the library for libappimage.

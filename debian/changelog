@@ -1,5 +1,163 @@
-template-repository (1.0-1) unstable; urgency=medium
+libappimage (1.0.4-5-1) unstable; urgency=medium
 
-  * Initial release
+  * Team upload.
+  * New upstream release.
+  * Fix & simplify the watch file, using the newer template provided by
+    uscan(1); drop almost all the options, no more needed now.
+  * Update the patches:
+    - disable_wget_dependency.patch: drop, no more needed
+    - enable_debianabimanager.diff: refresh
+  * Update the build dependencies according to the upstream build system:
+    - drop desktop-file-utils, libboost-thread-dev, libboost-system-dev, and
+      xxd, no more needed
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Pino Toscano <pino@debian.org>  Mon, 02 Jan 2023 08:20:13 +0100
+
+libappimage (1.0.4-4) unstable; urgency=medium
+
+  * Team upload.
+  * Drop patch update_cmake_to_look_for_dependency_targets.patch: in addition
+    to a typo that makes libappimageConfig.cmake an invalid cmake script,
+    the XdgUtils libraries are not actually exposed as public dependencies.
+  * Update the dependencies of libappimage-dev to reflect what is actually
+    searched by the cmake scripts:
+    - drop xdg-utils-cxx
+    - explicitly add libglib2.0-dev, and zlib1g-dev
+  * Hack my previous hack in the patch enable_debianabimanager.diff to make sure
+    that CMAKE_BUILD_TYPE is set at the of the top-level CMakeLists.txt as it
+    was passed to cmake; this fixes the generation of the cmake configuration
+    files for the exported targets.
+
+ -- Pino Toscano <pino@debian.org>  Wed, 28 Dec 2022 08:59:18 +0100
+
+libappimage (1.0.4-3) unstable; urgency=medium
+
+  * Team upload.
+  * Drop the transitional libappimage0 binary: it is empty, it does not depend
+    on anything, and it cannot pull the actual library as it has a different
+    ABI.
+  * Drop the 'testsuite' autopkgtest: it does not test the installed package,
+    and it actually does nothing since the tests are disabled during the build
+    (-DBUILD_TESTING=OFF is passed to cmake).
+  * Update lintian override info format in d/source/lintian-overrides on line 2,
+    6.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository-Browse.
+  * Update standards version to 4.6.2, no changes needed.
+  * Update the other metadata fields to the actual upstream location.
+  * Replace patch upstream_fix_typos.patch with the upstream commit
+    e456429dafaee3245f6e7925b64d5990ad5affe7; patch
+    upstream_Fix-typos-Unsuported-Unsupported-180.patch.
+  * Make sure DebianABIManager is actually applied:
+    - rename the X-Debian-Abi field to X-Debian-ABI, as used by DebianABIManager
+    - add X-CMake-Target: libappimage to specify the actual target to handle
+    - extend the patch enable_debianabimanager.diff with some manual gymnastics:
+      DebianABIManager works only with a "Debian" CMAKE_BUILD_TYPE, so
+      - to set it like that before including DebianABIManager (it's the very
+        last bit in the top-level CMakeLists.txt, so it is fine)
+      - append the link flags (which include the linker script) specified for
+        the "Debian" build type to the link flags in use
+    - in the symbols file:
+      - switch the actual file name to libappimage.so.1.0abi1
+      - switch the version of all the symbols from "Base" (i.e. none) to
+        ABI_1.0_1
+      - add the ABI tag symbol
+    - drop the libappimage0 breaks/replaces, since the library names do not
+      conflict with non-ABI ones
+  * Improve the install files to be more precise.
+  * Drop the libgtest-dev build dependency, as it is not needed (the tests are
+    not built).
+
+ -- Pino Toscano <pino@debian.org>  Tue, 27 Dec 2022 14:45:27 +0100
+
+libappimage (1.0.4-2) unstable; urgency=medium
+
+  * Update symbols file from buildd logs.
+
+ -- Scarlett Moore <sgmoore@debian.org>  Tue, 27 Dec 2022 03:42:15 -0700
+
+libappimage (1.0.4-1) unstable; urgency=medium
+
+  [ Harald Sitter ]
+  * New upstream release.
+
+  [ Scarlett Moore ]
+  * Update dependencies as per cmake and configure cmake flags to use
+   system libraries.
+  * Merge KDE Neon Packaging. Thanks!
+  * Switch to debhelper-compat.
+  * Update repo, moved to 3rdparty under kde umbrella.
+  * Update symbols file.
+    - Add symbolshelper-confirmed header to symbols file.
+    - Rename file to new 1.0 SO version.
+    - Update name in symbols file.
+    - update new symbols / remove missing ( new SO version ).
+    - Use ABI Manager to bump SO Version as there are
+    missing symbols and I can't seem to get an answer
+    from upstream whether they are internal or public.
+    - Fix package name in symbols file to match abi bump.
+    - Refresh symbols i386.
+    - Refresh symbols amd64.
+    - Fix X-Debian-Abi in control file.
+    - Fix versions in symbols file.
+  * Add rules-requires-root: no in d/control.
+  * Update d/upstream/metadata.
+    - Remove obsolete entries already defined in d/copyright.
+    - Add bug-database entry.
+  * Remove Priority extras ( lintian ).
+  * Remove --as-needed flag as it is now default.
+  * Bump Standards:
+    - 4.5.1; no changes.
+    - 4.6.1, no changes needed.
+  * Change to team maintainer.
+  * Add googletest test dependency.
+  * Add override to dh_clean to clean up test data.
+  * Refresh copyright.
+    - Add upstream-contact field.
+    - Update file.
+    - Update year in copyright file.
+  * Refresh patches:
+    - Add patch to fix linking issues with clients of this library.
+    - Fix spelling error in patch description found by lintian.
+    See patch for details, upstreamed.
+    - Remove reproducible builds patch applied upstream.
+    - Remove 0001-Make-string-sanitizer-strictly-C-11 patch
+    applied upstream.
+  * Remove unused rules overrides.
+    - dh_missing --fail-missing is now default.
+    - dh_clean test dir no longer necessary.
+  * Update Homepage to new repo address.
+  * Add upstream patch to fix spelling error found by     lintian.
+  * Update my email address in uploaders.
+  * Add lintian overrides for source as these are test files.
+    - missing source in test/data as it is there so
+    it must be long-line false positive.
+    - Add the now triggered long line lintian.
+    - Add binary in source lintian.
+    - Fix lintian override catchalls.
+  * New release ( 1.0.4 ) Closes: #977192
+  * Release to unstable.
+
+ -- Scarlett Moore <sgmoore@debian.org>  Wed, 21 Dec 2022 08:12:12 -0700
+
+libappimage (1.0.2-0neon) focal; urgency=medium
+
+  * New release
+
+ -- Jonathan Riddell <jr@jriddell.org>  Wed, 24 Jul 2019 12:21:34 +0100
+
+libappimage (0.1.9+dfsg-1) unstable; urgency=medium
+
+  * Add a better description. (Closes: #921072)
+  * New upstream releaase.
+  * Refresh symbols file.
+  * Add --as-needed linker to avoid useless dependencies.
+  * Add upstream patch to rid of build-path in binary, thus getting rid of lintian error.
+  * Release to unstable.
+
+ -- Scarlett Moore <sgmoore@kde.org>  Sun, 10 Feb 2019 06:08:27 -0700
+
+libappimage (0.1.8+dfsg-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #912287)
+
+ -- Scarlett Moore <sgmoore@kde.org>  Fri, 11 Jan 2019 10:28:31 -0700
