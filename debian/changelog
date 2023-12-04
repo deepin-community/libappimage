@@ -1,3 +1,14 @@
+libappimage (1.0.4-5-2) unstable; urgency=medium
+
+  * Team upload.
+  * Switch the transitional xdg-utils-cxx build dependency to xdg-utils-cxx-dev.
+  * Backport upstream commit 1e0515b23b90588ce406669134feca56ddcbbe43 to fix
+    the build with GCC 13; patch upstream_Fix-build-with-gcc-13.1.1.patch.
+    (Closes: #1037716)
+  * Update symbols file.
+
+ -- Pino Toscano <pino@debian.org>  Fri, 14 Jul 2023 08:02:51 +0200
+
 libappimage (1.0.4-5-1) unstable; urgency=medium
 
   * Team upload.

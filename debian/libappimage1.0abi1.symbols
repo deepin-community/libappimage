@@ -1,4 +1,4 @@
-# SymbolsHelper-Confirmed: 1.0.4 amd64 arm64 armel armhf hppa i386 ia64 m68k mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sh4 sparc64 x32
+# SymbolsHelper-Confirmed: 1.0.4-5 amd64 i386
 libappimage.so.1.0abi1 libappimage1.0abi1 #MINVER#
 * Build-Depends-Package: libappimage-dev
  ABI_1.0_1@ABI_1.0_1 1.0.4-3~
@@ -473,6 +473,8 @@ libappimage.so.1.0abi1 libappimage1.0abi1 #MINVER#
  (optional=templinst)_ZNSt3mapINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIcS4_ESt4lessIS5_ESaISt4pairIKS5_S7_EEEixERSB_@ABI_1.0_1 1.0.3
  (optional=templinst|arch=!armel !armhf)_ZNSt3mapIPKN5boost6system14error_categoryESt10unique_ptrINS1_6detail12std_categoryESt14default_deleteIS7_EENS6_12cat_ptr_lessESaISt4pairIKS4_SA_EEED1Ev@ABI_1.0_1 1.0.3
  (optional=templinst|arch=!armel !armhf)_ZNSt3mapIPKN5boost6system14error_categoryESt10unique_ptrINS1_6detail12std_categoryESt14default_deleteIS7_EENS6_12cat_ptr_lessESaISt4pairIKS4_SA_EEED2Ev@ABI_1.0_1 1.0.3
+ (optional=templinst)_ZNSt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIcS4_EED1Ev@ABI_1.0_1 1.0.4-5
+ (optional=templinst)_ZNSt4pairIKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt6vectorIcS4_EED2Ev@ABI_1.0_1 1.0.4-5
  (optional=templinst|subst)_ZNSt5dequeIcSaIcEE13_M_insert_auxIPKcEEvSt15_Deque_iteratorIcRcPcET_S9_{size_t}@ABI_1.0_1 1.0.3
  (optional=templinst|subst)_ZNSt5dequeIcSaIcEE17_M_reallocate_mapE{size_t}b@ABI_1.0_1 1.0.3
  (optional=templinst|subst)_ZNSt5dequeIcSaIcEE22_M_reserve_map_at_backE{size_t}@ABI_1.0_1 1.0.3
@@ -495,7 +497,11 @@ libappimage.so.1.0abi1 libappimage1.0abi1 #MINVER#
  (optional=templinst)_ZNSt6vectorIcSaIcEEC1ESt16initializer_listIcERKS0_@ABI_1.0_1 1.0.3
  (optional=templinst)_ZNSt6vectorIcSaIcEEC2ERKS1_@ABI_1.0_1 1.0.3
  (optional=templinst)_ZNSt6vectorIcSaIcEEC2ESt16initializer_listIcERKS0_@ABI_1.0_1 1.0.3
+ (optional=templinst)_ZNSt6vectorIcSaIcEED1Ev@ABI_1.0_1 1.0.4-5
+ (optional=templinst)_ZNSt6vectorIcSaIcEED2Ev@ABI_1.0_1 1.0.4-5
  (optional=templinst|subst)_ZNSt6vectorIhSaIhEE17_M_default_appendE{size_t}@ABI_1.0_1 1.0.3
+ (optional=templinst)_ZNSt6vectorIhSaIhEED1Ev@ABI_1.0_1 1.0.4-5
+ (optional=templinst)_ZNSt6vectorIhSaIhEED2Ev@ABI_1.0_1 1.0.4-5
  (optional=templinst|arch=armel armhf)_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED0Ev@ABI_1.0_1 1.0.4
  (optional=templinst|arch=armel armhf)_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED1Ev@ABI_1.0_1 1.0.4
  (optional=templinst|arch=armel armhf)_ZNSt7__cxx1115basic_stringbufIcSt11char_traitsIcESaIcEED2Ev@ABI_1.0_1 1.0.4
@@ -507,7 +513,7 @@ libappimage.so.1.0abi1 libappimage1.0abi1 #MINVER#
  (optional=templinst)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE10_Auto_nodeD2Ev@ABI_1.0_1 1.0.4
  (optional=templinst)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE11lower_boundERS7_@ABI_1.0_1 1.0.3
  (optional=templinst|arch=i386 mipsel powerpc ppc64 s390x)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE14_M_insert_nodeEPSt18_Rb_tree_node_baseSG_PSt13_Rb_tree_nodeIS8_E@ABI_1.0_1 1.0.4
- (optional=templinst|arch=amd64 arm64 armel armhf hppa ia64 m68k mips64el ppc64el riscv64 sh4 sparc64 x32)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJOS5_EESJ_IJEEEEESt17_Rb_tree_iteratorIS8_ESt23_Rb_tree_const_iteratorIS8_EDpOT_@ABI_1.0_1 1.0.4
+ (optional=templinst)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJOS5_EESJ_IJEEEEESt17_Rb_tree_iteratorIS8_ESt23_Rb_tree_const_iteratorIS8_EDpOT_@ABI_1.0_1 1.0.4
  (optional=templinst)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE22_M_emplace_hint_uniqueIJRKSt21piecewise_construct_tSt5tupleIJRS7_EESJ_IJEEEEESt17_Rb_tree_iteratorIS8_ESt23_Rb_tree_const_iteratorIS8_EDpOT_@ABI_1.0_1 1.0.4
  (optional=templinst)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE24_M_get_insert_unique_posERS7_@ABI_1.0_1 1.0.3
  (optional=templinst)_ZNSt8_Rb_treeINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt4pairIKS5_S5_ESt10_Select1stIS8_ESt4lessIS5_ESaIS8_EE29_M_get_insert_hint_unique_posESt23_Rb_tree_const_iteratorIS8_ERS7_@ABI_1.0_1 1.0.3
@@ -530,6 +536,7 @@ libappimage.so.1.0abi1 libappimage1.0abi1 #MINVER#
  _ZSt9uppercaseRSt8ios_base@ABI_1.0_1 1.0.3
  (optional=templinst)_ZSteqIcEN9__gnu_cxx11__enable_ifIXsrSt9__is_charIT_E7__valueEbE6__typeERKNSt7__cxx1112basic_stringIS3_St11char_traitsIS3_ESaIS3_EEESE_@ABI_1.0_1 1.0.3
  (optional=templinst)_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EEPKS5_@ABI_1.0_1 1.0.3
+ (optional=templinst)_ZSteqIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_@ABI_1.0_1 1.0.4-5
  (optional=templinst)_ZStltIcSt11char_traitsIcESaIcEEbRKNSt7__cxx1112basic_stringIT_T0_T1_EESA_@ABI_1.0_1 1.0.3
  _ZStmiRKSt15_Deque_iteratorIcRcPcES4_@ABI_1.0_1 1.0.3
  (arch=amd64 arm64 hppa sh4 x32|subst)_ZStmiRKSt15_Deque_iteratorIcRcPcE{ssize_t}@ABI_1.0_1 1.0.4

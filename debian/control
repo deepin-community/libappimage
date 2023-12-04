@@ -13,7 +13,7 @@ Build-Depends: cmake,
                libsquashfuse-dev,
                pkg-config,
                pkg-kde-tools,
-               xdg-utils-cxx,
+               xdg-utils-cxx-dev,
                zlib1g-dev,
 Standards-Version: 4.6.2
 Section: libs
