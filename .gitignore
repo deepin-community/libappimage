@@ -1,0 +1,8 @@
+*build*/
+cmake-build-*/
+.idea/
+Testing/
+docs/_build
+docs/api
+docs/doxyoutput
+*.swp
