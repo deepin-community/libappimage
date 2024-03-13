@@ -1,3 +1,12 @@
+libappimage (1.0.4-5-3) unstable; urgency=medium
+
+  * Team upload.
+  * Update symbols files from the logs of buildds.
+  * Mark the internal boost-related symbols as optional, as they can change
+    depending on the boost version.
+
+ -- Pino Toscano <pino@debian.org>  Tue, 19 Dec 2023 18:16:16 +0100
+
 libappimage (1.0.4-5-2) unstable; urgency=medium
 
   * Team upload.
