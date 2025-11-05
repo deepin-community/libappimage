@@ -1,0 +1,33 @@
+Index: deepin_libappimage/src/libappimage/core/impl/TraversalType2.cpp
+===================================================================
+--- deepin_libappimage.orig/src/libappimage/core/impl/TraversalType2.cpp
++++ deepin_libappimage/src/libappimage/core/impl/TraversalType2.cpp
+@@ -8,6 +8,7 @@
+  extern "C" {
+ #include <squashfuse.h>
+ #include <squashfs_fs.h>
++#include <squashfuse/util.h>
+ }
+ 
+ // system
+@@ -52,7 +53,9 @@ public:
+         rootInodeId = sqfs_inode_root(&fs);
+         err = sqfs_traverse_open(&trv, &fs, rootInodeId);
+         if (err != SQFS_OK) {
++            sqfs_fd_t fd = fs.fd;
+             sqfs_destroy(&fs);
++            sqfs_fd_close(fd);
+             throw IOError("sqfs_traverse_open error");
+         }
+     }
+@@ -60,7 +63,10 @@ public:
+     virtual ~Priv() {
+         sqfs_traverse_close(&trv);
+ 
++        sqfs_fd_t fd = fs.fd;
++
+         sqfs_destroy(&fs);
++        sqfs_fd_close(fd);
+     }
+ 
+     bool isCompleted() const {

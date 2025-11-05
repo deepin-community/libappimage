@@ -1,3 +1,9 @@
+libappimage (1.0.4-5-3deepin1) unstable; urgency=medium
+
+  * prevent fd leak in TraversalType2 implementation
+
+ -- Zhang Sheng <zhangsheng@uniontech.com>  Wed, 05 Nov 2025 13:44:42 +0800
+
 libappimage (1.0.4-5-3) unstable; urgency=medium
 
   * Team upload.

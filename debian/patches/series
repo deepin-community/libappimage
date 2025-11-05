@@ -1,3 +1,4 @@
 upstream_Fix-typos-Unsuported-Unsupported-180.patch
 upstream_Fix-build-with-gcc-13.1.1.patch
 enable_debianabimanager.diff
+Fix-fd-leak.patch
